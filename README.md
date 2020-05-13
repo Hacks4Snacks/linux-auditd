@@ -1,12 +1,12 @@
 # linux-auditd
 Guidance for Auditd Implementation
 
-## Disclaimer
+### Disclaimer
 
-## Purpose
+### Purpose
 
-## Source Material
+### Source Material
 
-## Additional Rule Information and Guidance
+### Additional Rule Information and Guidance
 
-## Contributing
+### Contributing
