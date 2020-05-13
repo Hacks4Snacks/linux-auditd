@@ -1,27 +1,9 @@
 # Linux Audit Daemon - Base Configuration 
 # /etc/audit/audit.rules
-#
-#
 # 
 # Created  : 2020/02/23 
 # Modified : 
 # 
-# Based on rules published here:
-#   	Gov.uk auditd rules
-#   		https://github.com/gds-operations/puppet-auditd/pull/1
-# 	CentOS 7 hardening
-# 		https://highon.coffee/blog/security-harden-centos-7/#auditd---audit-daemon
-# 	Linux audit repo 
-# 		https://github.com/linux-audit/audit-userspace/tree/master/rules
-# 	Auditd high performance linux auditing
-# 		https://linux-audit.com/tuning-auditd-high-performance-linux-auditing/
-#   	Best Practice Auditd Configuration
-#       	https://github.com/Neo23x0/auditd
-# Further rules
-# 	For PCI DSS compliance see: 
-# 		https://github.com/linux-audit/audit-userspace/blob/master/rules/30-pci-dss-v31.rules
-# 	For NISPOM compliance see:
-# 		https://github.com/linux-audit/audit-userspace/blob/master/rules/30-nispom.rules
 
 # Remove any existing rules
 -D
