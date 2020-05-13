@@ -5,7 +5,7 @@
 #### GLOBAL VARIABLES ####
 
 SENSORIP="<IP OF SYSLOG SERVER OR SIEM>"
-AUDIT_RULE_URL="<LINKTORULELIST>"
+AUDIT_RULE_URL="https://raw.githubusercontent.com/Hacks4Snacks/linux-auditd/master/audit.rules" # Links to rule file in repository
 
 #### SCRIPT ACTIONS ####
 
