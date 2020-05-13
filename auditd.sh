@@ -200,7 +200,8 @@ setup_rsyslog_centos()
 
 #### UNINSTALL FUNCTIONS ####
 
-function uninstall_auditd_ubuntu {
+uninstall_auditd_ubuntu()
+{
     ${sudo} systemctl stop auditd
     ${sudo} systemctl disable auditd
     ${sudo} apt-get purge --auto-remove auditd > /dev/null 2>&1
@@ -209,7 +210,8 @@ function uninstall_auditd_ubuntu {
     ${sudo} rm -rf /var/log/audit > /dev/null 2>&1
 }
 
-function uninstall_auditd_suse {
+uninstall_auditd_suse()
+{
     ${sudo} systemctl stop auditd
     ${sudo} systemctl disable auditd
     ${sudo} zypper remove -y audit > /dev/null 2>&1
@@ -218,7 +220,8 @@ function uninstall_auditd_suse {
     ${sudo} rm -rf /var/log/audit > /dev/null 2>&1
 }
 
-function uninstall_auditd_centos {
+uninstall_auditd_centos()
+{
     ${sudo} systemctl stop auditd
     ${sudo} systemctl disable auditd
     ${sudo} yum remove -y audit > /dev/null 2>&1
@@ -227,7 +230,8 @@ function uninstall_auditd_centos {
     ${sudo} rm -rf /var/log/audit > /dev/null 2>&1
 }
 
-function auditd_uninstall {
+auditd_uninstall()
+{
     if [[ "${UBUNTU}" == "true" ]]; then
         uninstall_auditd_ubuntu
         elif [[ "${SUSE}" == "true" ]]; then
