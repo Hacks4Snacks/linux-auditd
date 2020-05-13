@@ -28,7 +28,7 @@ Neo23x0 best practice configuration https://github.com/Neo23x0/auditd/blob/maste
 bfuzzy auditd-attack https://github.com/bfuzzy/auditd-attack/blob/master/auditd-attack.rules
 
 
-## Additional Rule Information and Guidance
+## Additional Information and Guidance
 
 PCI DSS compliance see: https://github.com/linux-audit/audit-userspace/blob/master/rules/30-pci-dss-v31.rules
 
