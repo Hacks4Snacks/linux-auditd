@@ -1,17 +1,17 @@
 # linux-auditd
 Guidance for Auditd Implementation.
 
-### Disclaimer
+## Disclaimer
 
 Please ensure proper testing is performed prior to production/large scale implemenation.
 
-### Purpose
+## Purpose
 
 - Out of the box configuration and companion script that can be easily implemented on all major Linux distributions.
 - Reasonable log generation.
 - Human readable.
 
-### Source Material
+## Source Material
 
 Rules within the configuration are based on the sources and repositories below.
 
@@ -28,10 +28,10 @@ Neo23x0 best practice configuration https://github.com/Neo23x0/auditd/blob/maste
 bfuzzy auditd-attack https://github.com/bfuzzy/auditd-attack/blob/master/auditd-attack.rules
 
 
-### Additional Rule Information and Guidance
+## Additional Rule Information and Guidance
 
 PCI DSS compliance see: https://github.com/linux-audit/audit-userspace/blob/master/rules/30-pci-dss-v31.rules
 
 NISPOM compliance see: https://github.com/linux-audit/audit-userspace/blob/master/rules/30-nispom.rules
 
-### Contributing
+## Contributing
