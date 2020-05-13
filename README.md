@@ -1,5 +1,5 @@
 # linux-auditd
-Guidance for Auditd Implementation
+Guidance for Auditd Implementation.
 
 ### Disclaimer
 
