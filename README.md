@@ -1,37 +1,32 @@
-# linux-auditd
-Guidance for Auditd Implementation.
+# Linux Auditd Guidance
+The purpose of this repository is to provide tools and guidance for a basic implementation of Auditd.
 
-## Disclaimer
+## Advisory
 
-Please ensure proper testing is performed prior to production/large scale implemenation.
+This respository is still very much a work in progress.
 
-## Purpose
+**Disclaimer**: Please ensure proper testing is preformed prior to applying guidance within this repository into a production environment.
 
-- Out of the box configuration and companion script that can be easily implemented on all major Linux distributions.
-- Reasonable log generation.
-- Human readable.
+## About Auditd
 
-## Source Material
+In progress.
 
-Rules within the configuration are based on the sources and repositories below.
+## How To Use This Repository
 
-Gov.uk auditd rules https://github.com/gds-operations/puppet-auditd/pull/1
+In progress.
 
-CentOS 7 hardening https://highon.coffee/blog/security-harden-centos-7/#auditd---audit-daemon
+## Contributing
 
-Linux audit repo https://github.com/linux-audit/audit-userspace/tree/master/rules
-
-Auditd high performance linux auditing https://linux-audit.com/tuning-auditd-high-performance-linux-auditing/
-
-Neo23x0 best practice configuration https://github.com/Neo23x0/auditd/blob/master/audit.rules
-
-bfuzzy auditd-attack https://github.com/bfuzzy/auditd-attack/blob/master/auditd-attack.rules
-
+Please submit all improvements, contributions, and fixes as a GitHub issue or a pull request.
 
 ## Additional Information and Guidance
 
-PCI DSS compliance see: https://github.com/linux-audit/audit-userspace/blob/master/rules/30-pci-dss-v31.rules
+The information within this repository wouldn't have been possible without the research and open source contributions on many other parties, and I want to ensure proper acknowledge for their ongoing contributions to the industry.
 
-NISPOM compliance see: https://github.com/linux-audit/audit-userspace/blob/master/rules/30-nispom.rules
-
-## Contributing
+* [CentOS Hardening](https://highon.coffee/blog/security-harden-centos-7/#auditd---audit-daemon)
+* [Linux Audit Github](https://github.com/linux-audit/audit-userspace/tree/master/rules)
+* [High Performance Linux Auditing](https://linux-audit.com/tuning-auditd-high-performance-linux-auditing/)
+* [Neo23x0 Best Practice Github](https://github.com/Neo23x0/auditd/blob/master/audit.rules)
+* [Bfuzzy Auditd-Attack Github](https://github.com/bfuzzy/auditd-attack/blob/master/auditd-attack.rules)
+* [PCI DSS Compliance](https://github.com/linux-audit/audit-userspace/blob/master/rules/30-pci-dss-v31.rules)
+* [NISPOM Compliance](https://github.com/linux-audit/audit-userspace/blob/master/rules/30-nispom.rules)
