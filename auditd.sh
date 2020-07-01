@@ -65,7 +65,7 @@ install_auditd_ubuntu() {
     dpkg -s auditd &> /dev/null
     if [ $? != 0 ]; then
         ${sudo} apt-get update > /dev/null 2>&1
-        ${sudo} apt-get install auditd > /dev/null 2>&1
+        ${sudo} apt-get install auditd audispd-plugins -y > /dev/null 2>&1
         setup_auditd_ubuntu
     else
         ${sudo} systemctl stop auditd > /dev/null 2>&1
@@ -111,7 +111,7 @@ install_rsyslog_ubuntu() {
     dpkg -s auditd &> /dev/null
     if [ $? != 0 ]; then
         ${sudo} apt-get update > /dev/null 2>&1
-        ${sudo} apt-get install rsyslog > /dev/null 2>&1
+        ${sudo} apt-get install rsyslog -y > /dev/null 2>&1
         setup_rsyslog_ubuntu
     else
         ${sudo} systemctl stop rsyslog > /dev/null 2>&1
