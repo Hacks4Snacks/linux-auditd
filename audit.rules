@@ -1,8 +1,7 @@
 # Linux Audit Daemon - Base Configuration 
 # /etc/audit/audit.rules
 # 
-# Created  : 2020/02/23 
-# Modified : 
+# Last Modified : 2020-07-01
 # 
 
 # Remove any existing rules
@@ -18,7 +17,7 @@
 
 # Ignore errors
 ## e.g. caused by users or files not found in the local environment  
--i 
+-i
 
 # Self Auditing ---------------------------------------------------------------
 
@@ -155,7 +154,7 @@
 ### Changes to hostname
 -a always,exit -F arch=b32 -S sethostname -S setdomainname -k network_modifications
 -a always,exit -F arch=b64 -S sethostname -S setdomainname -k network_modifications
-## Successful IPv4 Connections 
+## Successful IPv4 Connections
 -a always,exit -F arch=b64 -S connect -F a2=16 -F success=1 -F key=network_connect_4
 -a always,exit -F arch=b32 -S connect -F a2=16 -F success=1 -F key=network_connect_4
 ## Successful IPv6 Connections
@@ -269,13 +268,20 @@
 -w /usr/bin/whoami -p x -k recon
 -w /etc/issue -p r -k recon
 -w /etc/hostname -p r -k recon
+-w /usr/bin/id -p x -k recon
+-w /usr/bin/hostname -p x -k recon
+-w /usr/bin/uname -p x -k recon
+-w /usr/bin/last -p x -k recon
+-w /usr/bin/w -p x -k recon
+-w /usr/bin/lastlog -p x -k recon
+-w /usr/bin/printenv -p x -k recon
 
 ## Suspicious activity
 -w /usr/bin/wget -p x -k susp_activity
 -w /usr/bin/curl -p x -k susp_activity
 -w /usr/bin/base64 -p x -k susp_activity
--w /bin/nc -p x -k susp_activity
--w /bin/netcat -p x -k susp_activity
+-w /usr/bin/nc -p x -k susp_activity
+-w /usr/bin/netcat -p x -k susp_activity
 -w /usr/bin/ncat -p x -k susp_activity
 -w /usr/bin/ssh -p x -k susp_activity
 -w /usr/bin/socat -p x -k susp_activity
@@ -283,15 +289,24 @@
 -w /usr/bin/rawshark -p x -k susp_activity
 -w /usr/bin/rdesktop -p x -k susp_activity
 -w /usr/bin/nmap -p x -k susp_activity 
+-w /usr/bin/scp -p x -k susp_activity
+-w /usr/bin/sftp -p x -k susp_activity
+-w /usr/bin/ftp -p x -k susp_activity
+-w /usr/bin/tshark -p x -k susp_activity
 
 ## Added to catch netcat on Ubuntu
 -w /bin/nc.openbsd -p x -k susp_activity
 
 ## Sbin suspicious activity
 -w /sbin/iptables -p x -k sbin_susp 
+-w /sbin/ip6tables -p x -k sbin_susp
 -w /sbin/ifconfig -p x -k sbin_susp
+-w /usr/sbin/arptables -p x -k sbin_susp
+-w /usr/sbin/ebtables -p x -k sbin_susp
+-w /usr/sbin/nft -p x -k sbin_susp
 -w /usr/sbin/tcpdump -p x -k sbin_susp
 -w /usr/sbin/traceroute -p x -k sbin_susp
+-w /usr/sbin/ip -p x -k sbin_susp
 
 ## Injection 
 ### These rules watch for code injection by the ptrace facility.
@@ -315,6 +330,9 @@
 -w /usr/bin/rpm -p x -k software_mgmt
 -w /usr/bin/yum -p x -k software_mgmt
 
+# DNF (Fedora/RedHat 8/CentOS 8)
+-w /usr/bin/dnf -p x -k software_mgmt
+
 # YAST/Zypper/RPM (SuSE)
 -w /sbin/yast -p x -k yast
 -w /sbin/yast2 -p x -k yast
@@ -326,13 +344,14 @@
 -w /usr/bin/apt-add-repository -p x -k software_mgmt
 -w /usr/bin/apt-get -p x -k software_mgmt
 -w /usr/bin/aptitude -p x -k software_mgmt
+-w /usr/bin/apt -p x -k software_mgmt
 
 # Special Software ------------------------------------------------------------
 
 ## GDS specific secrets
 -w /etc/puppet/ssl -p wa -k puppet_ssl
 
-## IBM Bigfix BESClient 
+## IBM Bigfix BESClient
 -a exit,always -F arch=b64 -S open -F dir=/opt/BESClient -F success=0 -k soft_besclient
 -w /var/opt/BESClient/ -p wa -k soft_besclient
 
@@ -350,14 +369,14 @@
 -w /etc/sysconfig/docker-storage -k docker
 -w /usr/lib/systemd/system/docker.service -k docker
 
-### Kubelet 
+### Kubelet
 -w /usr/bin/kubelet -k kubelet
 
 # High volume events ----------------------------------------------------------
 
 ## Remove them if the cause to much volumen in your einvironment
 
-## Root command executions 
+## Root command executions
 -a exit,always -F arch=b64 -F euid=0 -S execve -k rootcmd
 -a exit,always -F arch=b32 -F euid=0 -S execve -k rootcmd
 
