@@ -358,6 +358,9 @@
 ## CHEF https://www.chef.io/chef/
 -w /etc/chef -p wa -k soft_chef
 
+## Ansible
+-w /etc/ansible -p wa -k soft_ansible
+
 ### Docker
 -w /usr/bin/dockerd -k docker
 -w /usr/bin/docker -k docker
@@ -381,8 +384,8 @@
 -a exit,always -F arch=b32 -F euid=0 -S execve -k rootcmd
 
 ## File Deletion Events by User
--a always,exit -F arch=b32 -S rmdir -S unlink -S unlinkat -S rename -S renameat -F auid>=500 -F auid!=4294967295 -k delete
--a always,exit -F arch=b64 -S rmdir -S unlink -S unlinkat -S rename -S renameat -F auid>=500 -F auid!=4294967295 -k delete
+#-a always,exit -F arch=b32 -S rmdir -S unlink -S unlinkat -S rename -S renameat -F auid>=500 -F auid!=4294967295 -k delete
+#-a always,exit -F arch=b64 -S rmdir -S unlink -S unlinkat -S rename -S renameat -F auid>=500 -F auid!=4294967295 -k delete
 
 ## File Access
 ### Unauthorized Access (unsuccessful)
