@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#### Script to install RSYLOG, AUDITD, and configure host to send logs to a SYSLOG server ####
+#### Script to install RSYSLOG, AUDITD, and configure host to send logs to a SYSLOG server ####
 
 #### GLOBAL VARIABLES ####
 
