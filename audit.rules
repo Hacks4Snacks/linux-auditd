@@ -1,7 +1,7 @@
 # Linux Audit Daemon - Base Configuration 
-# /etc/audit/audit.rules
+# /etc/audit/rules.d/audit.rules
 # 
-# Last Modified : 2020-07-01
+# Last Modified : 2020-07-09
 # 
 
 # Remove any existing rules
