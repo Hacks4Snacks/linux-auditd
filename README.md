@@ -1,4 +1,6 @@
 # Linux Auditd Guidance
+[![CodeFactor](https://www.codefactor.io/repository/github/hacks4snacks/linux-auditd/badge)](https://www.codefactor.io/repository/github/hacks4snacks/linux-auditd)
+
 The purpose of this repository is to provide tools and guidance for a basic implementation of Auditd.
 
 ## Advisory
