@@ -21,8 +21,8 @@ fi
 if [[ -f /etc/os-release ]]; then
     source /etc/os-release
     elif [[ -f /etc/redhat-release ]]; then
-    NAME=`sed -rn 's/(\w+).*/\1/p' /etc/redhat-release`
-    VERSION_ID=`grep -o '[0-9]\.[0-9]' /etc/redhat-release`
+    NAME=$(sed -rn 's/(\w+).*/\1/p' /etc/redhat-release)
+    VERSION_ID=$(grep -o '[0-9]\.[0-9]' /etc/redhat-release)
 else
     echo "Can not identify OS"
     exit 1
@@ -62,9 +62,8 @@ install_auditd() {
 }
 
 install_auditd_ubuntu() {
-    dpkg -s auditd &> /dev/null
-    if [ $? != 0 ]; then
-        ${sudo} apt-get update > /dev/null 2>&1
+    if ! dpkg -s auditd &> /dev/null; then
+    	${sudo} apt-get update > /dev/null 2>&1
         ${sudo} apt-get install auditd audispd-plugins -y > /dev/null 2>&1
         setup_auditd_ubuntu
     else
@@ -74,8 +73,7 @@ install_auditd_ubuntu() {
 }
 
 install_auditd_suse() {
-    rpm -q audit &> /dev/null
-    if [ $? != 0 ]; then
+    if ! rpm -q audit &> /dev/null; then
         ${sudo} zypper refresh > /dev/null 2>&1
         ${sudo} zypper install audit -y > /dev/null 2>&1
         setup_auditd_suse
@@ -86,8 +84,7 @@ install_auditd_suse() {
 }
 
 install_auditd_centos() {
-    rpm -q audit &> /dev/null
-    if [ $? != 0 ]; then
+    if ! rpm -q audit &> /dev/null; then
         #${sudo} yum update > /dev/null 2>&1
         ${sudo} yum install -y audit > /dev/null 2>&1
         setup_auditd_centos
@@ -108,8 +105,7 @@ install_rsyslog() {
 }
 
 install_rsyslog_ubuntu() {
-    dpkg -s auditd &> /dev/null
-    if [ $? != 0 ]; then
+    if ! dpkg -s auditd &> /dev/null; then
         ${sudo} apt-get update > /dev/null 2>&1
         ${sudo} apt-get install rsyslog -y > /dev/null 2>&1
         setup_rsyslog_ubuntu
@@ -120,8 +116,7 @@ install_rsyslog_ubuntu() {
 }
 
 install_rsyslog_suse() {
-    rpm -q audit &> /dev/null
-    if [ $? != 0 ]; then
+    if ! rpm -q audit &> /dev/null; then
         ${sudo} zypper refresh > /dev/null 2>&1
         ${sudo} zypper install rsyslog -y > /dev/null 2>&1
         setup_rsyslog_suse
@@ -132,8 +127,7 @@ install_rsyslog_suse() {
 }
 
 install_rsyslog_centos() {
-    rpm -q audit &> /dev/null
-    if [ $? != 0 ]; then
+    if ! rpm -q audit &> /dev/null; then
         #${sudo} yum update > /dev/null 2>&1
         ${sudo} yum install -y rsyslog > /dev/null 2>&1
         setup_rsyslog_centos
