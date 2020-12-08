@@ -1,7 +1,7 @@
 # Linux Audit Daemon - Base Configuration 
 # /etc/audit/rules.d/audit.rules
 # 
-# Last Modified : 2020-07-09
+# Last Modified : 2020-12-08
 # 
 
 # Remove any existing rules
@@ -109,6 +109,7 @@
 
 ## Stunnel
 -w /usr/sbin/stunnel -p x -k stunnel
+-w /usr/bin/stunnel -p x -k stunnel
 
 ## Cron configuration & scheduled jobs
 -w /etc/cron.allow -p wa -k cron
