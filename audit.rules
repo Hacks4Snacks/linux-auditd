@@ -380,11 +380,15 @@
 
 # High volume events ----------------------------------------------------------
 
-## Remove them if the cause to much volumen in your einvironment
+## Remove them if they cause too much volume in your environment
 
 ## Root command executions
 -a exit,always -F arch=b64 -F euid=0 -S execve -k rootcmd
 -a exit,always -F arch=b32 -F euid=0 -S execve -k rootcmd
+
+## Sudo command attempt
+-a always,exit -F arch=b32 -S execve -F exec=/usr/bin/sudo -F uid!=0 -k sudocmd
+-a always,exit -F arch=b64 -S execve -F exec=/usr/bin/sudo -F uid!=0 -k sudocmd
 
 ## File Deletion Events by User
 #-a always,exit -F arch=b32 -S rmdir -S unlink -S unlinkat -S rename -S renameat -F auid>=500 -F auid!=4294967295 -k delete
