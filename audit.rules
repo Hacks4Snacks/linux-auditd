@@ -82,6 +82,7 @@
 -a always,exit -F perm=x -F auid!=-1 -F path=/sbin/rmmod -k modules
 -a always,exit -F arch=b64 -S finit_module -S init_module -S delete_module -F auid!=-1 -k modules
 -a always,exit -F arch=b32 -S finit_module -S init_module -S delete_module -F auid!=-1 -k modules
+
 ## Modprobe configuration
 -w /etc/modprobe.conf -p wa -k modprobe
 
@@ -102,8 +103,9 @@
 -a always,exit -F arch=b32 -S swapon -S swapoff -F auid!=-1 -k swap
 
 ## Time
--a exit,always -F arch=b32 -S adjtimex -S settimeofday -S clock_settime -k time
--a exit,always -F arch=b64 -S adjtimex -S settimeofday -S clock_settime -k time
+-a always,exit -F arch=b32 -F uid!=ntp -S adjtimex -S settimeofday -S clock_settime -k time
+-a always,exit -F arch=b64 -F uid!=ntp -S adjtimex -S settimeofday -S clock_settime -k time
+
 ### Local time zone
 -w /etc/localtime -p wa -k localtime
 
@@ -295,6 +297,7 @@
 -w /usr/bin/sftp -p x -k susp_activity
 -w /usr/bin/ftp -p x -k susp_activity
 -w /usr/bin/tshark -p x -k susp_activity
+-w /root/.ssh -p wa -k susp_activity
 
 ## Added to catch netcat on Ubuntu
 -w /bin/nc.openbsd -p x -k susp_activity
@@ -374,6 +377,13 @@
 -w /etc/sysconfig/docker -k docker
 -w /etc/sysconfig/docker-storage -k docker
 -w /usr/lib/systemd/system/docker.service -k docker
+
+### Containerd
+-w /etc/containerd -k containerd
+-w /usr/bin/containerd -k containerd
+-w /usr/lib/systemd/system/containerd.service -k containerd
+-w /var/lib/containerd -k containerd
+
 
 ### Kubelet
 -w /usr/bin/kubelet -k kubelet
